@@ -7,6 +7,9 @@ const btnPrev = document.getElementById('btn-prev')
 const numbers = document.getElementsByClassName('numero')
 const operadores = document.getElementsByClassName('operador')
 
+let error = document.getElementById('error')
+
+
 
 /* =========== Escrever na tela =========== */
 // numeros
@@ -55,6 +58,32 @@ btnClear.addEventListener('click', clear)
 
 
 /* =========== Calculos =========== */
+const btnCalcular = document.getElementById('igual')
+
+// pegar expressão
+const calcular = () => {
+    if (result.textContent.charAt(result.textContent.length - 1) !== "+" && 
+        result.textContent.charAt(result.textContent.length - 1) !== "-" &&
+        result.textContent.charAt(result.textContent.length - 1) !== "x" &&
+        result.textContent.charAt(result.textContent.length - 1) !== "÷") {
+
+        let expressao = result.textContent
+        expressao = expressao.replaceAll("÷", "/")
+        expressao = expressao.replaceAll("x", "*")
+
+        res = eval(expressao)
+        result.textContent = res
+    } else {
+        const errorBox = document.querySelector('.error')
+        errorBox.style.display = "flex"
+        error.textContent = "Erro ao realizar o calculo!!!"
+        result.textContent = 0
+    }
+}
+
+btnCalcular.addEventListener('click', calcular)
+
+
 
 
 

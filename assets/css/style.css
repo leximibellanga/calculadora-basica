@@ -39,6 +39,22 @@ section div.resultado {
     z-index: 10;
 }
 
+/* Msg de erro */
+.error {
+    margin-bottom: 12px;
+    background-color: #f1f1f1;
+    padding: .5rem;
+    border-radius: 8px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.error span {
+    color: crimson;
+    font-weight: 600;
+    font-size: .9em;
+}
+
 section div.valores {
     display: flex;
     flex-flow: column nowrap;
