@@ -33,6 +33,9 @@ section div.resultado {
     font-weight: bold;
     padding: 20px;
     margin: 0px 0px 20px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    border: 1px solid #00ad65;
+    overflow-x: hidden;
     z-index: 10;
 }
 
@@ -55,6 +58,7 @@ section div.valores div.linha button {
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.8);
     border: none;
+    cursor: pointer;
     transition: all .4s ease;
 }
 
@@ -63,8 +67,8 @@ section div.valores div.linha button:hover {
     transform: scale(1.05);
 }
 
-section div.valores div.linha button#limpar {
-    grid-column: 1 / -2;
+section div.valores div.linha button#btn-clear {
+    grid-column: 1 / -3;
 }
 
 section div.valores div.linha button#nr0 {
@@ -75,7 +79,7 @@ section div.valores div.linha button#igual {
     grid-column: 2 / -1;
 }
 
-section div.valores div.linha button#igual, section div.valores div.linha button#limpar {
+section div.valores div.linha button#igual, section div.valores div.linha button#btn-clear {
     background-color: #00ad65;
 }
 
