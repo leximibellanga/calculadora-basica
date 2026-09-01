@@ -88,11 +88,11 @@ section div.valores div.linha button#btn-clear {
 }
 
 section div.valores div.linha button#nr0 {
-    grid-column: 1 / 2;
+    grid-column: 2 / 3;
 }
 
 section div.valores div.linha button#igual {
-    grid-column: 2 / -1;
+    grid-column: 3 / -1;
 }
 
 section div.valores div.linha button#igual, section div.valores div.linha button#btn-clear {

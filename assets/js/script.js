@@ -17,9 +17,9 @@ for (let i = 0; i < numbers.length; i++) {
     const number = numbers[i];
 
     number.addEventListener('click', () => {
-        if (result.innerText != 0) 
+        if (result.innerText != 0)
             result.textContent += number.value;
-        else 
+        else
             result.textContent = number.value;
     })
 }
@@ -29,12 +29,12 @@ for (let i = 0; i < operadores.length; i++) {
     const operador = operadores[i];
 
     operador.addEventListener('click', () => {
-        if (result.innerText.charAt(result.innerText.length - 1) !== "÷" && 
-            result.innerText.charAt(result.innerText.length - 1) !== "+" && 
+        if (result.innerText.charAt(result.innerText.length - 1) !== "÷" &&
+            result.innerText.charAt(result.innerText.length - 1) !== "+" &&
             result.innerText.charAt(result.innerText.length - 1) !== "-" &&
             result.innerText.charAt(result.innerText.length - 1) !== "x")
             result.textContent += operador.value
-    }) 
+    })
 }
 
 
@@ -42,7 +42,7 @@ for (let i = 0; i < operadores.length; i++) {
 const clearLast = () => {
     if (result.innerText.length > 1)
         result.textContent = result.innerText.substring(0, (result.innerText.length - 1))
-    else 
+    else
         result.textContent = 0
 }
 btnPrev.addEventListener('click', clearLast)
@@ -55,14 +55,12 @@ const clear = () => {
 btnClear.addEventListener('click', clear)
 
 
-
-
 /* =========== Calculos =========== */
 const btnCalcular = document.getElementById('igual')
 
 // pegar expressão
 const calcular = () => {
-    if (result.textContent.charAt(result.textContent.length - 1) !== "+" && 
+    if (result.textContent.charAt(result.textContent.length - 1) !== "+" &&
         result.textContent.charAt(result.textContent.length - 1) !== "-" &&
         result.textContent.charAt(result.textContent.length - 1) !== "x" &&
         result.textContent.charAt(result.textContent.length - 1) !== "÷") {
@@ -85,5 +83,40 @@ btnCalcular.addEventListener('click', calcular)
 
 
 
+
+/* =========== Eventos de teclado =========== */
+document.addEventListener('keydown', (e) => {
+    // Escrever numeros
+    for (let i = 0; i <= 9; i++) {
+        if (e.key === String(i)) {
+            if (result.innerText != 0)
+                result.textContent += String(i);
+            else
+                result.textContent = String(i);
+        }
+    }
+
+    // Escrever operadores
+    let tecladoOperadores = ['+', '/', 'x', '-']
+    for (let i = 0; i < tecladoOperadores.length; i++) {
+        const element = tecladoOperadores[i];
+        if (e.key === element) {
+            if (result.innerText.charAt(result.innerText.length - 1) !== "÷" &&
+                result.innerText.charAt(result.innerText.length - 1) !== "+" &&
+                result.innerText.charAt(result.innerText.length - 1) !== "-" &&
+                result.innerText.charAt(result.innerText.length - 1) !== "x")
+                result.textContent += element
+        }
+    }
+
+    // Limpar o ultimo digito
+    if (e.key === 'Backspace') clearLast()
+
+    // Limpar todo texto
+    if (e.key === 'Delete') clear()
+
+    // Calcular
+    if (e.key === 'Enter') calcular()
+})
 
 
